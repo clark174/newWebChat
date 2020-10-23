@@ -2,7 +2,8 @@ var id;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
-    $('#checkText').click(sendText); //TODO: change this to use setInterval()
+    setTimeout(sendText, 1000); //This should auto-update every 1 second
+    //$('#checkText').click(sendText); //TODO: change this to use setInterval()
 
     var input = document.getElementById("textinput");
     // Respond to enter key
