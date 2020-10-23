@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-# nameclient.py - Program to receive web name lookup command
-# This CGI program used the python nameserver to lookup names
-# And retuen result to web page
-# James Skon, 2019
+# webchat.py - Program to receive web chat messages
+# This CGI program used the python chatServer to put messages
+# And obtain messages which are sent to the web page
+# adapted from James Skon, 2019
 #!/usr/bin/env python
+
 import os
 from os import path
 import sys
@@ -13,6 +14,7 @@ import cgitb
 cgitb.enable()
 
 fifoname="skonChat"  # Unique name for fifos
+# TODO: change this? We may need a different name to be actually unique
 sendFifoFile = "/home/fifo/"+fifoname+"_sendFifo"
 getFifoFile = "/home/fifo/"+fifoname+"_getFifo"
 def print_header():

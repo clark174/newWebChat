@@ -1,7 +1,7 @@
 #MakeFile to build and deploy the Sample US CENSUS Name Data using ajax
 # For CSC3004 Software Development
 
-user = skon
+user = skon #TODO: change this to one of our directories probably
 
 all:  PutHTML PutCGI
 
