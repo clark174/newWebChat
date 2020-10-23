@@ -2,7 +2,7 @@ var id;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
-    $('#checkText').click(sendText);
+    $('#checkText').click(sendText); //TODO: change this to use setInterval()
 
     var input = document.getElementById("textinput");
     // Respond to enter key

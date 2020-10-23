@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-# nameclient.py - Program to receive web name lookup command
-# This CGI program used the python nameserver to lookup names
-# And retuen result to web page
-# James Skon, 2019
+# nameclient.py - Program to receive send chat command
+# This CGI program uses the python chatServer to send messages
+# And return received messages to the web page
+# adapted from James Skon, 2019
 #!/usr/bin/env python
 import os
 from os import path
 import sys
 
-
 fifoname="skonChat"  # Unique name for fifos
+#TODO: change the name to be actually unique, probably
 sendFifoFile = "/home/fifo/"+fifoname+"_sendFifo"
 getFifoFile = "/home/fifo/"+fifoname+"_getFifo"
 
