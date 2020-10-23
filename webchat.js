@@ -3,7 +3,7 @@ var id;
 $(document).ready(function () {
     $('#sendText').click(sendText);
     setTimeout(sendText, 1000); //This should auto-update every 1 second
-    //$('#checkText').click(sendText); //TODO: change this to use setInterval()
+    //$('#checkText').click(sendText); //previous version
 
     var input = document.getElementById("textinput");
     // Respond to enter key
@@ -53,6 +53,10 @@ function sendText() {
   updateScroll();
 
   message=inText.replace("","+");
+
+//proposed feature: show other users' chat names before their messages
+  message.prepend("_" + id + ":");
+
   $.ajax(
     {
     type: "get",
@@ -69,5 +73,9 @@ function sendText() {
 function processResults(data) {
   // add to the bottom of the chat box
   console.log("got:"+data);
+
+//proposed: clear own id from "received" messages?
+  data.split('_').forEach(remove("_"+id+":"));
+
   $('#chatBox').append(data);
 }

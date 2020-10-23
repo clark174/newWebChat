@@ -13,8 +13,7 @@ import cgi;
 import cgitb
 cgitb.enable()
 
-fifoname="skonChat"  # Unique name for fifos
-# TODO: change this? We may need a different name to be actually unique
+fifoname="team2Chat"  # Unique name for fifos
 sendFifoFile = "/home/fifo/"+fifoname+"_sendFifo"
 getFifoFile = "/home/fifo/"+fifoname+"_getFifo"
 def print_header():
@@ -47,7 +46,6 @@ def main():
     if (form.getvalue("message") and form.getvalue("id")):
         id=form.getvalue("id")
         message=form.getvalue("message")
-        #result=callChatServer(id,message)
         result=callChatServer(id,message)
         result=result.replace("\n", "<br/>")
         print(result)
