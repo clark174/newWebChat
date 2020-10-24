@@ -25,7 +25,7 @@ def getMessages(id,message):
 
 
 def chatServer():
-  fifoname="skonChat" # unique name for fifos
+  fifoname="team2Chat" # unique name for fifos
   sendFifoFile = "/home/fifo/"+fifoname+"_sendFifo"
   getFifoFile = "/home/fifo/"+fifoname+"_getFifo"
 

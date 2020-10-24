@@ -2,7 +2,7 @@ var id;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
-    setTimeout(sendText, 1000); //This should auto-update every 1 second
+    setInterval(checkText, 1000); //This should auto-update every 1 second
     //$('#checkText').click(sendText); //previous version
 
     var input = document.getElementById("textinput");
@@ -55,7 +55,25 @@ function sendText() {
   message=inText.replace("","+");
 
 //proposed feature: show other users' chat names before their messages
-  message.prepend("_" + id + ":");
+//  message.prepend("_" + id + ":");
+
+  $.ajax(
+    {
+    type: "get",
+    url: "/cgi-bin/skon_webchat.py?message=" + message + "&id="+id,
+    dataType: "text",
+    success:  processResults,
+    error: function(request, ajaxOptions, thrownError)
+    {
+        $("#debug").text("error with get:"+request+thrownError);
+    }
+  });
+}
+
+//function to check if other messages have come through.
+function checkText(){
+  updateScroll();
+  message = "+"; //empty message
 
   $.ajax(
     {
@@ -72,10 +90,10 @@ function sendText() {
 
 function processResults(data) {
   // add to the bottom of the chat box
-  console.log("got:"+data);
+   console.log("got:"+data);
 
 //proposed: clear own id from "received" messages?
-  data.split('_').forEach(remove("_"+id+":"));
+//  data.split('_').forEach(remove("_"+id+":"));
 
-  $('#chatBox').append(data);
+   $('#chatBox').append(data);
 }
