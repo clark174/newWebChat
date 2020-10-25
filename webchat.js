@@ -2,7 +2,7 @@ var id;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
-    setInterval(checkText, 1000); //This should auto-update every 1 second
+    setInterval(sendText, 1000); //This should auto-update every 1 second
     //$('#checkText').click(sendText); //previous version
 
     var input = document.getElementById("textinput");
@@ -17,9 +17,12 @@ $(document).ready(function () {
       }
     });
 
-
     id=makeid(10);
     console.log("ID:",id);
+    
+    $('#updateId').click(updateId);
+
+    var userList = {};
 
 });
 
@@ -33,12 +36,18 @@ function makeid(length) {
    return result;
 }
 
+//respond to updateId button
+function updateId(){
+    id = $('#idText').val();
+    $('#idText').val(""); //could be improved
+    $('#currentId').text(id+"(You)");
+}
+
 // Function to force scrollable window at bottom
 function updateScroll(){
     var element = document.getElementById("chatBox");
     element.scrollTop = element.scrollHeight;
 }
-
 
  // Respond to send button
 function sendText() {
@@ -55,7 +64,7 @@ function sendText() {
   message=inText.replace("","+");
 
 //proposed feature: show other users' chat names before their messages
-//  message.prepend("_" + id + ":");
+message.prepend("_" + id + ":");
 
   $.ajax(
     {
@@ -93,7 +102,18 @@ function processResults(data) {
    console.log("got:"+data);
 
 //proposed: clear own id from "received" messages?
-//  data.split('_').forEach(remove("_"+id+":"));
+  //data.split('_').forEach(remove(id+":"));
+
+//add new users to the user list
+  data.split('_').forEach(item =>
+    {
+    var user = item.substr(0,item.find(":"); //attempt to find usernames in data
+    if(!userList.contains(user)){ //if the user is new, add it to the list
+      $('#currentId').append("<p>"+user+"</p>");
+      userList.push(user);
+      }
+    }
+  );
 
    $('#chatBox').append(data);
 }
