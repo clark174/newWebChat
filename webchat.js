@@ -105,7 +105,7 @@ function processResults(data) {
   data.split('_').forEach(function(item)
     {
     var user = item.substr(0,item.indexOf(":")); //attempt to find usernames in data
-    if(!userList.contains(user)){ //if the user is new, add it to the list
+    if(user!=undefined && !userList.contains(user)){ //if the user is new, add it to the list
       $('#currentId').append("<p>"+user+"</p>");
       userList.push(user);
       }
