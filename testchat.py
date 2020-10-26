@@ -9,7 +9,6 @@ from os import path
 import sys
 
 fifoname="team2Chat"  # Unique name for fifos
-#TODO: change the name to be actually unique, probably
 sendFifoFile = "/home/fifo/"+fifoname+"_sendFifo"
 getFifoFile = "/home/fifo/"+fifoname+"_getFifo"
 

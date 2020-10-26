@@ -2,8 +2,6 @@ var id;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
-    setInterval(sendText, 1000); //This should auto-update every 1 second
-    //$('#checkText').click(sendText); //previous version
 
     var input = document.getElementById("textinput");
     // Respond to enter key
@@ -81,8 +79,7 @@ message.prepend("_" + id + ":");
 
 //function to check if other messages have come through.
 function checkText(){
-  updateScroll();
-  message = "+"; //empty message
+  message = ""; //empty message
 
   $.ajax(
     {
@@ -113,7 +110,9 @@ function processResults(data) {
       userList.push(user);
       }
     }
-  ); //end forEach
+  );
 
    $('#chatBox').append(data);
+
+   setTimeout(checkText, 1000); //auto-update every 1 second
 }
