@@ -1,7 +1,10 @@
-var id;
+var id, name;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
+<<<<<<< HEAD
+=======
+>>>>>>> 8e17a1007143b610efb34fd5e7fa18601a53b116
 
     var input = document.getElementById("textinput");
     // Respond to enter key
@@ -62,8 +65,8 @@ function sendText() {
   message=inText.replace("","+");
 
 //proposed feature: show other users' chat names before their messages
-message.prepend("_" + id + ":");
-
+  name = "_" + id + ":";
+  message = name.concat(message);
   $.ajax(
     {
     type: "get",
@@ -104,7 +107,7 @@ function processResults(data) {
 //add new users to the user list
   data.split('_').forEach(function(item)
     {
-    var user = item.substr(0,item.find(":"); //attempt to find usernames in data
+    var user = item.substr(0,item.find(":")); //attempt to find usernames in data
     if(!userList.contains(user)){ //if the user is new, add it to the list
       $('#currentId').append("<p>"+user+"</p>");
       userList.push(user);
