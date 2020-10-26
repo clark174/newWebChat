@@ -20,8 +20,6 @@ $(document).ready(function () {
 
     $('#updateId').click(updateId);
 
-    var userList = new Array();
-
 });
 
 function makeid(length) {
@@ -79,7 +77,7 @@ function sendText() {
 
 //function to check if other messages have come through.
 function checkText(){
-  message = ""; //empty message
+  message = "+"; //empty message
 
   $.ajax(
     {
@@ -105,10 +103,7 @@ function processResults(data) {
   data.split('<\br>').forEach(function(item)
     {
     var user = item.substr(0,item.indexOf("_")); //attempt to find usernames in data
-    if(user!=undefined && !userList.contains(user)){ //if the user is new, add it to the list
       $('#currentId').append("<p>"+user+"</p>");
-      userList.push(user);
-      }
     }
   );
 
