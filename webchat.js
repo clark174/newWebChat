@@ -62,12 +62,12 @@ function sendText() {
   message=inText.replace("","+");
 
 //proposed feature: show other users' chat names before their messages
-  name = "_" + id + ":";
-  message = name.concat(message);
+  //name = "_" + id + ":";
+  //message = name.concat(message);
   $.ajax(
     {
     type: "get",
-    url: "/cgi-bin/team2_webchat.py?message=" + message + "&id="+id,
+    url: "/cgi-bin/team2_webchat.py?message=" + message, + "&id="+id,
     dataType: "text",
     success:  processResults,
     error: function(request, ajaxOptions, thrownError)
