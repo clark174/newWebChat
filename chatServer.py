@@ -20,7 +20,7 @@ def getMessages(id,message):
     # Add message to all other users
     for key in keys:
         if key!=id:
-            messages[key]+=message+"\n"
+            messages[key]+= key+": "+message+"\n"
     return result
 
 
