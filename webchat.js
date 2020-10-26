@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     $('#updateId').click(updateId);
 
-    var userList = {};
+    var userList = [];
 
 });
 
