@@ -67,7 +67,7 @@ function sendText() {
   $.ajax(
     {
     type: "get",
-    url: "/cgi-bin/team2_webchat.py?message=" + message, + "&id="+id,
+    url: "/cgi-bin/team2_webchat.py?message=" + message + "&id="+id,
     dataType: "text",
     success:  processResults,
     error: function(request, ajaxOptions, thrownError)
@@ -102,9 +102,9 @@ function processResults(data) {
   //data.split('_').forEach(function(str) {str.remove(id+":")});
 
 //add new users to the user list
-  data.split('_').forEach(function(item)
+  data.split('\n').forEach(function(item)
     {
-    var user = item.substr(0,item.indexOf(":")); //attempt to find usernames in data
+    var user = item.substr(0,item.indexOf("_")); //attempt to find usernames in data
     if(user!=undefined && !userList.contains(user)){ //if the user is new, add it to the list
       $('#currentId').append("<p>"+user+"</p>");
       userList.push(user);
