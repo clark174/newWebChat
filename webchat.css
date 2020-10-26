@@ -3,7 +3,7 @@ h2, h3, p {
     font-family: Verdana, sans-serif;
 }
 
-#main{
+#main, #maintwo{
   position: relative;
   left: 30%;
   width: 500px;
@@ -11,7 +11,7 @@ h2, h3, p {
   border: 5px solid black;
 }
 
-#content{
+#content, #contenttwo{
   margin-left:auto;
   margin-right: auto;
   width: 400px;
@@ -47,3 +47,4 @@ h2, h3, p {
 	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
 	overflow: scroll;
 }
+

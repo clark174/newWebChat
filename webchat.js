@@ -1,8 +1,8 @@
-var id;
+var id, name;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
-    setInterval(sendText, 1000); //This should auto-update every 1 second
+    setInterval(checkText, 1000); //This should auto-update every 1 second
     //$('#checkText').click(sendText); //previous version
 
     var input = document.getElementById("textinput");
@@ -64,8 +64,8 @@ function sendText() {
   message=inText.replace("","+");
 
 //proposed feature: show other users' chat names before their messages
-message.prepend("_" + id + ":");
-
+  name = "_" + id + ":";
+  message = name.concat(message);
   $.ajax(
     {
     type: "get",
@@ -107,7 +107,7 @@ function processResults(data) {
 //add new users to the user list
   data.split('_').forEach(function(item)
     {
-    var user = item.substr(0,item.find(":"); //attempt to find usernames in data
+    var user = item.substr(0,item.find(":")); //attempt to find usernames in data
     if(!userList.contains(user)){ //if the user is new, add it to the list
       $('#currentId').append("<p>"+user+"</p>");
       userList.push(user);
