@@ -2,10 +2,7 @@ var id, name;
 
 $(document).ready(function () {
     $('#sendText').click(sendText);
-<<<<<<< HEAD
-=======
->>>>>>> 8e17a1007143b610efb34fd5e7fa18601a53b116
-
+    
     var input = document.getElementById("textinput");
     // Respond to enter key
     input.addEventListener("keyup", function(event) {
