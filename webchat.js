@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     id=makeid(10);
     console.log("ID:",id);
-    
+
     $('#updateId').click(updateId);
 
     var userList = {};
@@ -102,10 +102,10 @@ function processResults(data) {
    console.log("got:"+data);
 
 //proposed: clear own id from "received" messages?
-  //data.split('_').forEach(remove(id+":"));
+  //data.split('_').forEach(function(str) {str.remove(id+":")});
 
 //add new users to the user list
-  data.split('_').forEach(item =>
+  data.split('_').forEach(function(item)
     {
     var user = item.substr(0,item.find(":"); //attempt to find usernames in data
     if(!userList.contains(user)){ //if the user is new, add it to the list
@@ -113,7 +113,7 @@ function processResults(data) {
       userList.push(user);
       }
     }
-  );
+  ); //end forEach
 
    $('#chatBox').append(data);
 }
