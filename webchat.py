@@ -30,7 +30,7 @@ def callChatServer(id,message):
 
     sendFifo=open(sendFifoFile, "w")
     getFifo=open(getFifoFile, "r")
-    sendFifo.write("_"+id+":"+message)
+    sendFifo.write(id+"_"+message)
     sendFifo.close()
 
     result=""
