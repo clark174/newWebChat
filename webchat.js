@@ -101,7 +101,7 @@ function processResults(data) {
   //data.split('_').forEach(function(str) {str.remove(id+":")});
 
 //add new users to the user list
-  data.split('<\br>').forEach(function(item)
+  data.split('<br/>').forEach(function(item)
     {
     var user = item.substr(0,item.indexOf("_")); //attempt to find usernames in data
       $('#currentId').append("<p>"+user+"</p>");
