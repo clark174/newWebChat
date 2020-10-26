@@ -49,7 +49,7 @@ function updateScroll(){
 function sendText() {
   console.log("sendText");
   // Get the text from the text box
-  inText = $('#textinput').val();
+  inText = id + ": " +  $('#textinput').val();
   // Clear the input text
   $('#textinput').val("");
 
@@ -58,6 +58,7 @@ function sendText() {
   updateScroll();
 
   message=inText.replace("","+");
+ console.log(message);
 
 //proposed feature: show other users' chat names before their messages
   //name = "_" + id + ":";
