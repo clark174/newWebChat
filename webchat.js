@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     $('#updateId').click(updateId);
 
-    var userList = [];
+    var userList = [' '];
 
 });
 
@@ -102,7 +102,7 @@ function processResults(data) {
   //data.split('_').forEach(function(str) {str.remove(id+":")});
 
 //add new users to the user list
-  data.split('\n').forEach(function(item)
+  data.split('<\br>').forEach(function(item)
     {
     var user = item.substr(0,item.indexOf("_")); //attempt to find usernames in data
     if(user!=undefined && !userList.contains(user)){ //if the user is new, add it to the list
